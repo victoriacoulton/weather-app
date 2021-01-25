@@ -1,0 +1,100 @@
+.container {
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  margin-top: 20px;
+  padding: 20px;
+  max-width: 70%;
+}
+
+#search-bar {
+  padding: 40px 0px 25px 0px;
+  width: 520px;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-size: 26px;
+  border-radius: 15px;
+}
+
+.cityDateTime,
+.forecast,
+#current-icon {
+  text-align: center;
+}
+
+.weather {
+  margin-top: 10px;
+}
+
+.currentData {
+  max-width: 85%;
+  margin: 0 auto;
+  padding: 25px 0px 25px 0px;
+}
+
+#temp-box {
+  text-align: right;
+}
+
+#current-temp {
+  text-align: right;
+  font-size: 56px;
+  padding: 10px;
+}
+
+.swtich-units {
+  font-size: 24px;
+  text-align: right;
+  position: relative;
+  left: -26px;
+  top: -18px;
+}
+
+.swtich-units:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#current-icon {
+  font-size: 60px;
+}
+
+.fa-sun {
+  color: rgb(252, 214, 0);
+}
+
+.fa-cloud {
+  color: grey;
+}
+
+.fa-cloud-showers-heavy {
+  color: darkgrey;
+}
+
+.conditions {
+  text-align: left;
+  margin-top: 8px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0px;
+}
+
+.forecast {
+  margin: 10px 10px 30px 10px;
+}
+.forcastIcon,
+.day,
+.temp {
+  margin: 0 auto;
+  padding: 5px;
+}
+
+sup {
+  top: -0.25em;
+}
