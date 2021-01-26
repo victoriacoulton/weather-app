@@ -61,8 +61,8 @@ function updateWeather(response) {
   let country = response.data.sys.country;
   let cityName = document.querySelector("#current-city").innerHTML = `${currentCity}, ${country}`; 
 
-  let temperature = Math.round(response.data.main.temp);
-  let degrees = document.querySelector("#current-temp").innerHTML = `${temperature} <sup> ℃ </sup>`; 
+  celsiusTemperature = Math.round(response.data.main.temp);
+  let degrees = document.querySelector("#current-temp").innerHTML = `${celsiusTemperature}`;  //<sup> ℃ </sup>
 
   let currentIcon = document.querySelector("#current-icon"); 
   currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
@@ -78,6 +78,34 @@ function updateWeather(response) {
   let weatherdescription = document.querySelector("#description").innerHTML = `${description}`; 
 }
 
+//Temp ℃ --> ℉            Doesn't really work.... 
+//let celsius = document.querySelector("#unit-C").addEventListener("click", handleSubmit); //this only works for searches, not API current locations. 
+
+function switchFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp"); 
+  let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+}
+
+function switchCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp"); 
+  temperatureElement.innerHTML = celsiusTemperature;
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  
+}
+
+let celsiusTemperature = null; 
+
+let fahrenheitLink = document.querySelector("#unit-F");
+fahrenheitLink.addEventListener("click", switchFahrenheit);
+
+let celsiusLink = document.querySelector("#unit-C");
+celsiusLink.addEventListener("click", switchCelsius);
 
 
 
@@ -96,13 +124,3 @@ searchCurrentLocation.addEventListener("click", findLocation);
 search("London");
 
 
-
-//Temp ℃ --> ℉            Doesn't really work.... 
-let fahrenheit = document.querySelector("#unit-F").addEventListener("click", switchFahrenheit);
-let celsius = document.querySelector("#unit-C").addEventListener("click", showCity); //this only works for searches, not API current locations. 
-
-function switchFahrenheit() {
-  let temperature = document.querySelector("#current-temp").innerHTML;
-  fTemperature = Math.round(temperature*9/5) + 32;
-  let degrees = document.querySelector("#current-temp").innerHTML = `${fTemperature} <sup> ℉ </sup>`; 
-}

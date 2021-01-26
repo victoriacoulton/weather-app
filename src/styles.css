@@ -37,7 +37,6 @@
 #current-temp {
   text-align: right;
   font-size: 56px;
-  padding: 10px;
 }
 
 #description {
@@ -48,15 +47,17 @@
   font-size: 24px;
   text-align: right;
   position: relative;
-  left: -26px;
-  top: -18px;
+  top: -24px;
 }
 
-.swtich-units:hover {
-  cursor: pointer;
+.active,
+.active:hover {
+  cursor: default;
+  color: black;
 }
 
-#unit-C #unit-F {
+#unit-C,
+#unit-F {
   font-size: 20px;
 }
 
