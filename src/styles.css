@@ -15,8 +15,7 @@
   border-radius: 15px;
 }
 
-.cityDateTime,
-.forecast {
+.cityDateTime {
   text-align: center;
 }
 
@@ -67,36 +66,34 @@ ul {
   padding: 20px 0px;
 }
 
-.forecast {
-  margin: 10px 10px 30px 10px;
+#forecast-section {
+  padding: 10px 10px 30px 10px;
+  display: block;
+  margin: 0px auto;
+  text-align: center;
 }
 .forcastIcon,
+.forecast-time,
 .day,
 .temp {
   margin: 0 auto;
   padding: 5px;
 }
-
 sup {
   top: -0.25em;
 }
 
-#source-code-link {
-  text-decoration: none;
+#source-code {
   display: block;
   margin: 0px auto;
   font-size: 14px;
   max-width: 60%;
 }
-
-.fa-sun {
-  color: rgb(252, 214, 0);
+#source-code-link {
+  text-decoration: none;
 }
 
-.fa-cloud {
-  color: grey;
-}
-
-.fa-cloud-showers-heavy {
-  color: darkgrey;
+p {
+  margin: 0 auto;
+  padding: 0px;
 }

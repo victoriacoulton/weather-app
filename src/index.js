@@ -45,6 +45,8 @@ function handleSubmit(event) {
 function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(updateWeather);
+  let forcastApi = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(forcastApi).then(forecastWeather);
 }
 
 function findLocation(event) {
@@ -78,8 +80,44 @@ function updateWeather(response) {
   let weatherdescription = document.querySelector("#description").innerHTML = `${description}`; 
 }
 
-//Temp ℃ --> ℉            Doesn't really work.... 
-//let celsius = document.querySelector("#unit-C").addEventListener("click", handleSubmit); //this only works for searches, not API current locations. 
+function forecastWeather(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+ 
+  for (let index = 0; index < 5; index++) {
+    forecast = (response.data.list[index]);
+    forecastElement.innerHTML +=   
+      `<div class="col-2">
+        <div class="card">
+          <div class="card-body">
+            <p class="forecast-time">
+              ${formatHours(forecast.dt * 1000)}
+            </p>
+            <h3 class="forcastIcon"> 
+              <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="">  
+            </h3>
+            <p class="temp"> 
+              <strong>${Math.round(forecast.main.temp_max)}<sup>℃</sup></strong> | ${Math.round(forecast.main.temp_min)}<sup>℃</sup>
+            </p>
+          </div>
+        </div>
+      </div>`;
+  }
+}
+
+function formatHours(timestamp) {
+  let now = new Date(timestamp);
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`   
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`}
+  return `${hours}:${minutes}`; 
+}
+
 
 function switchFahrenheit(event) {
   event.preventDefault();
@@ -99,15 +137,6 @@ function switchCelsius(event) {
   
 }
 
-let celsiusTemperature = null; 
-
-let fahrenheitLink = document.querySelector("#unit-F");
-fahrenheitLink.addEventListener("click", switchFahrenheit);
-
-let celsiusLink = document.querySelector("#unit-C");
-celsiusLink.addEventListener("click", switchCelsius);
-
-
 
 let date = document.querySelector("#current-date").innerHTML = setDate();
 let time = document.querySelector("#current-time").innerHTML = setTime();
@@ -119,6 +148,25 @@ submitNewCity.addEventListener("click", handleSubmit);
 
 let searchCurrentLocation = document.querySelector("#current-location-button");
 searchCurrentLocation.addEventListener("click", findLocation);
+
+let celsiusTemperature = null; 
+
+let fahrenheitLink = document.querySelector("#unit-F");
+fahrenheitLink.addEventListener("click", switchFahrenheit);
+
+let celsiusLink = document.querySelector("#unit-C");
+celsiusLink.addEventListener("click", switchCelsius);
+
+
+
+
+
+
+
+
+
+
+
 
 
 search("London");
