@@ -57,7 +57,7 @@ body {
 }
 
 #current-icon,
-#description {
+#description #forecast-section {
   display: block;
   margin: 0 auto;
 }
@@ -75,9 +75,7 @@ ul {
 }
 
 #forecast-section {
-  padding: 10px 10px 10px 10px;
-  display: block;
-  margin: 0px auto;
+  padding: 10px auto;
   text-align: center;
 }
 
