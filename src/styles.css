@@ -1,18 +1,24 @@
-.container {
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  border-radius: 15px;
-  margin-top: 20px;
-  padding: 20px;
-  max-width: 60%;
+body {
+  background: #e9e9f1;
 }
 
-#search-bar {
-  padding: 40px 0px 25px 0px;
-  width: 520px;
-  margin: 0 auto;
-  line-height: 1.5;
-  font-size: 26px;
+.container {
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  background: #ffff;
   border-radius: 15px;
+  margin-top: 30px;
+  padding: 20px;
+  max-width: 85%;
+}
+
+.col-6 {
+  margin: 0 auto;
+  padding: 0px 30px;
+  width: initial;
+}
+
+.input-group::after {
+  box-sizing: inherit;
 }
 
 .cityDateTime {
@@ -20,14 +26,14 @@
 }
 
 .currentData {
-  margin: 0px 0px 35px 0px;
+  margin: 0px 0px 20px 0px;
   padding: 15px 0px 15px 0px;
 }
 
 #temp-box {
   text-align: right;
   font-size: 60px;
-  padding: 10px 0px 10px 0px;
+  padding: 23px 0px 23px 0px;
 }
 
 .swtich-units {
@@ -58,23 +64,27 @@
 #description {
   text-transform: capitalize;
   text-align: center;
+  font-weight: bolder;
+  color: #8a8a8a;
 }
 
 ul {
   list-style: none;
   margin: 0px auto;
-  padding: 20px 0px;
+  padding: 40px 0px;
 }
 
 #forecast-section {
-  padding: 10px 10px 30px 10px;
+  padding: 10px 10px 10px 10px;
   display: block;
   margin: 0px auto;
   text-align: center;
 }
+
 .forcastIcon,
 .forecast-time,
 .day,
+p,
 .temp {
   margin: 0 auto;
   padding: 5px;
@@ -87,13 +97,9 @@ sup {
   display: block;
   margin: 0px auto;
   font-size: 14px;
-  max-width: 60%;
+  max-width: 80%;
+  color: #8a8a8a;
 }
 #source-code-link {
   text-decoration: none;
-}
-
-p {
-  margin: 0 auto;
-  padding: 0px;
 }

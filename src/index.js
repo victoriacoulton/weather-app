@@ -68,7 +68,6 @@ function showPosition (position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`
   axios.get(apiUrl).then(updateWeather);
   let forcastApi = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`
-
   axios.get(forcastApi).then(forecastWeather);
 }
 
@@ -108,14 +107,13 @@ function forecastWeather(response) {
               <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="">  
             </h3>
             <p class="temp"> 
-              <strong>${Math.round(forecast.main.temp_max)}<sup>℃</sup></strong> | ${Math.round(forecast.main.temp_min)}<sup>℃</sup>
+              <strong>${Math.round(forecast.main.temp_max)}<sup> ℃</sup></strong>  |  ${Math.round(forecast.main.temp_min)}<sup> ℃</sup>
             </p>
           </div>
         </div>
       </div>`;
   }
 }
-
 
 function switchFahrenheit(event) {
   event.preventDefault();
@@ -132,7 +130,6 @@ function switchCelsius(event) {
   temperatureElement.innerHTML = celsiusTemperature;
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
-  
 }
 
 
@@ -140,6 +137,9 @@ let date = document.querySelector("#current-date").innerHTML = setDate();
 let time = document.querySelector("#current-time").innerHTML = setTime();
 let apiKey = "f896fd4c5067a8dda6aeb8f9d2ddd111";
 let units = "metric";
+let celsiusTemperature = null;
+
+
 
 let submitNewCity = document.querySelector(".search-bar");
 submitNewCity.addEventListener("click", handleSubmit);
@@ -147,26 +147,10 @@ submitNewCity.addEventListener("click", handleSubmit);
 let searchCurrentLocation = document.querySelector("#current-location-button");
 searchCurrentLocation.addEventListener("click", findLocation);
 
-let celsiusTemperature = null; 
-
 let fahrenheitLink = document.querySelector("#unit-F");
 fahrenheitLink.addEventListener("click", switchFahrenheit);
 
 let celsiusLink = document.querySelector("#unit-C");
 celsiusLink.addEventListener("click", switchCelsius);
 
-
-
-
-
-
-
-
-
-
-
-
-
 search("London");
-
-
