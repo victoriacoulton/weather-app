@@ -13,17 +13,13 @@ body {
 
 .fa-map-marker-alt {
   font-size: 35px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .col-6 {
   margin: 0 auto;
   padding: 0px 30px;
   width: initial;
-}
-
-.input-group::after {
-  box-sizing: inherit;
 }
 
 .cityDateTime {
@@ -69,7 +65,6 @@ body {
 #description {
   text-transform: capitalize;
   text-align: center;
-  font-weight: bolder;
   color: #8484ad;
 }
 
@@ -108,4 +103,10 @@ sup {
 }
 #source-code-link {
   text-decoration: none;
+}
+
+#updatetime {
+  color: #8484ad;
+  text-align: center;
+  font-size: 14px;
 }

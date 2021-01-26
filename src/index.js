@@ -44,6 +44,7 @@ function formatHours(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`}
   return `${hours}:${minutes}`; 
+  
 }
 
 //Search for new city
@@ -64,12 +65,14 @@ function findLocation(event) {
 event.preventDefault();
 navigator.geolocation.getCurrentPosition(showPosition);
 }
+
 function showPosition (position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`
   axios.get(apiUrl).then(updateWeather);
   let forcastApi = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`
   axios.get(forcastApi).then(forecastWeather);
 }
+
 
 function updateWeather(response) {
   let currentCity = response.data.name;                   
@@ -80,7 +83,9 @@ function updateWeather(response) {
   let humidity = Math.round(response.data.main.humidity);
   let windspeed = Math.round(response.data.wind.speed);
   let description = (response.data.weather[0].description);
-  
+  let timeUpdate = formatHours(response.data.dt * 1000);
+  let timeUpdateElement = document.querySelector("#updatetime").innerHTML = `Last updated: ${timeUpdate}`; 
+
   let currentIcon = document.querySelector("#current-icon"); 
     currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     currentIcon.setAttribute("alt", `${response.data.weather[0].description}`);
@@ -132,13 +137,11 @@ function switchCelsius(event) {
   fahrenheitLink.classList.remove("active");
 }
 
-
 let date = document.querySelector("#current-date").innerHTML = setDate();
 let time = document.querySelector("#current-time").innerHTML = setTime();
 let apiKey = "f896fd4c5067a8dda6aeb8f9d2ddd111";
 let units = "metric";
 let celsiusTemperature = null;
-
 
 
 let submitNewCity = document.querySelector(".search-bar");
