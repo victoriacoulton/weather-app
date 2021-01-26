@@ -2,13 +2,13 @@
 function setTime() {
 let now = new Date();
 let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`   
+  }
 let minutes = now.getMinutes();
   if (minutes < 10) {
-    return `${hours}:0${minutes}`   
-  }
-  else {
-  return(`${hours}:${minutes}`);
-  } 
+    minutes = `0${minutes}`}
+return `${hours}:${minutes}`; 
 }
 
 function nth(date) {
@@ -51,6 +51,7 @@ function findLocation(event) {
 event.preventDefault();
 navigator.geolocation.getCurrentPosition(showPosition);
 }
+
 function showPosition (position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`
   axios.get(apiUrl).then(updateWeather);
@@ -66,7 +67,7 @@ function updateWeather(response) {
   let windspeed = Math.round(response.data.wind.speed);
   let windspeedValue = document.querySelector("#wind").innerHTML = `${windspeed}`; 
 
-  let description = (response.data.weather[0].main);
+  let description = (response.data.weather[0].description);
   let weatherdescription = document.querySelector("#description").innerHTML = `${description}`; 
 
   let currentCity = response.data.name;                   

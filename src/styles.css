@@ -41,6 +41,10 @@
   padding: 10px;
 }
 
+#description {
+  text-transform: capitalize;
+}
+
 .swtich-units {
   font-size: 24px;
   text-align: right;
