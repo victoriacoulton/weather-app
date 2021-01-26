@@ -1,14 +1,19 @@
 body {
-  background: #e9e9f1;
+  background: #e6e6f3;
 }
 
 .container {
   border: 2px solid rgba(0, 0, 0, 0.3);
-  background: #ffff;
+  background: #fff;
   border-radius: 15px;
   margin-top: 30px;
   padding: 20px;
   max-width: 85%;
+}
+
+.fa-map-marker-alt {
+  font-size: 35px;
+  padding: 10px;
 }
 
 .col-6 {
@@ -65,13 +70,13 @@ body {
   text-transform: capitalize;
   text-align: center;
   font-weight: bolder;
-  color: #8a8a8a;
+  color: #8484ad;
 }
 
 ul {
   list-style: none;
-  margin: 0px auto;
-  padding: 40px 0px;
+  margin: 23px 0px 0px 0px;
+  padding: 20px 0px;
 }
 
 #forecast-section {
@@ -81,16 +86,17 @@ ul {
   text-align: center;
 }
 
+p,
 .forcastIcon,
 .forecast-time,
 .day,
-p,
 .temp {
   margin: 0 auto;
   padding: 5px;
 }
+
 sup {
-  top: -0.25em;
+  top: -0.35em;
 }
 
 #source-code {
