@@ -40,41 +40,32 @@
 
      <section class="currentData">
         <div class="row">
-          <div class="col" id=temp-box>
-            <p> 
+          <div class="col-4" id=temp-box>
               <span id=current-temp></span>
-              <div class="swtich-units">
-                <p>
+                <p class="swtich-units">
                   <a href= "#" id="unit-C"> ℃ </a>|
                   <a href= "#" id="unit-F"> ℉ </a>
-                </p>  
-              </div>
+                </p> 
             </p>
           </div>
-          <div class="col">
-            <div id="current-icon"><i class="fas fa-sun"></i></div>
+          <div class="col-4">
+            <img src="" id="current-icon" alt="">
           </div>
-          <div class="col">
-            <div class="current-conditions">
-              <ul>
-                <li>
-                  <strong id="description">Clear Sky</strong>
-                </li>
-                <li>
-                  <strong>Precipitation</strong> <span id ="precipitation">0</span>%
-                </li>
-                <li>
-                  <strong>Humidity</strong> <span id="humidity"></span>%
-                </li>
-                <li>
-                  <strong>Wind Speed </strong> <span id="wind"></span> km/h
-                </li>
-              </ul>
-            </div>
-          </div>
+          <div class="col-4">
+             <ul class="current-conditions">                
+               <li><strong id="description">Clear Sky</strong></li>
+               <li><strong>Precipitation</strong> <span id ="precipitation">0</span>%</li>
+               <li><strong>Humidity</strong> <span id="humidity"></span>%</li>
+               <li><strong>Wind Speed </strong> <span id="wind"></span> km/h</li>
+             </ul>
+           </div>
         </div>
       </section>
 
+
+
+
+      
     <section class="forecast">
       <div class="row">
         <div class="col">

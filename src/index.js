@@ -1,4 +1,15 @@
 //Update to current date and time
+function setDate() {
+let now = new Date();
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September","October", "November", "Decemeber"];
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let day = days[now.getDay()];
+let month = months[now.getMonth()];
+let year = now.getFullYear();
+let dateNo = now.getDate();
+return(`${day} ${dateNo}<sup>${nth(dateNo)}</sup> ${month} ${year}`);
+}
+
 function setTime() {
 let now = new Date();
 let hours = now.getHours();
@@ -14,7 +25,7 @@ return `${hours}:${minutes}`;
 function nth(date) {
   let dateDigit = (date % 10);
   if (dateDigit === 1) {
-      return "st";
+    return "st";
   } else if (dateDigit === 2) {
      return "nd";
   } else if (dateDigit === 3) {
@@ -22,17 +33,6 @@ function nth(date) {
   }  else { 
     return "th"}
   }
-
-function setDate() {
-let now = new Date();
-let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September","October", "November", "Decemeber"];
-let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let day = days[now.getDay()];
-let month = months[now.getMonth()];
-let year = now.getFullYear();
-let dateNo = now.getDate();
-return(`${day} ${dateNo}<sup>${nth(dateNo)}</sup> ${month} ${year}`);
-}
 
 
 //Search for new city
@@ -51,7 +51,6 @@ function findLocation(event) {
 event.preventDefault();
 navigator.geolocation.getCurrentPosition(showPosition);
 }
-
 function showPosition (position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`
   axios.get(apiUrl).then(updateWeather);
@@ -73,7 +72,16 @@ function updateWeather(response) {
   let currentCity = response.data.name;                   
   let country = response.data.sys.country;
   let cityName = document.querySelector("#current-city").innerHTML = `${currentCity}, ${country}`; 
+
+  //change icon
+  let currentIcon = document.querySelector("#current-icon"); 
+  let icon = (response.data.weather[0].icon);
+  currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+
+
 }
+
+
 
 
 let date = document.querySelector("#current-date").innerHTML = setDate();
@@ -86,6 +94,7 @@ submitNewCity.addEventListener("click", showCity);
 
 let searchCurrentLocation = document.querySelector("#current-location-button");
 searchCurrentLocation.addEventListener("click", findLocation);
+
 
 
 
