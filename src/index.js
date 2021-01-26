@@ -36,15 +36,15 @@ function nth(date) {
 
 
 //Search for new city
-function search(city) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(updateWeather);
-}
-
-function showCity(event) {
+function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#search-for-city").value; 
   search(city)
+}
+
+function search(city) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(updateWeather);
 }
 
 function findLocation(event) {
@@ -57,8 +57,16 @@ function showPosition (position) {
 }
 
 function updateWeather(response) {
+  let currentCity = response.data.name;                   
+  let country = response.data.sys.country;
+  let cityName = document.querySelector("#current-city").innerHTML = `${currentCity}, ${country}`; 
+
   let temperature = Math.round(response.data.main.temp);
   let degrees = document.querySelector("#current-temp").innerHTML = `${temperature} <sup> ℃ </sup>`; 
+
+  let currentIcon = document.querySelector("#current-icon"); 
+  currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  currentIcon.setAttribute("alt", `${response.data.weather[0].description}`);
 
   let humidity = Math.round(response.data.main.humidity);
   let humidityValue = document.querySelector("#humidity").innerHTML = `${humidity}`; 
@@ -68,17 +76,6 @@ function updateWeather(response) {
 
   let description = (response.data.weather[0].description);
   let weatherdescription = document.querySelector("#description").innerHTML = `${description}`; 
-
-  let currentCity = response.data.name;                   
-  let country = response.data.sys.country;
-  let cityName = document.querySelector("#current-city").innerHTML = `${currentCity}, ${country}`; 
-
-  //change icon
-  let currentIcon = document.querySelector("#current-icon"); 
-  let icon = (response.data.weather[0].icon);
-  currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
-
-
 }
 
 
@@ -90,12 +87,13 @@ let apiKey = "f896fd4c5067a8dda6aeb8f9d2ddd111";
 let units = "metric";
 
 let submitNewCity = document.querySelector(".search-bar");
-submitNewCity.addEventListener("click", showCity);
+submitNewCity.addEventListener("click", handleSubmit);
 
 let searchCurrentLocation = document.querySelector("#current-location-button");
 searchCurrentLocation.addEventListener("click", findLocation);
 
 
+search("London");
 
 
 
@@ -108,5 +106,3 @@ function switchFahrenheit() {
   fTemperature = Math.round(temperature*9/5) + 32;
   let degrees = document.querySelector("#current-temp").innerHTML = `${fTemperature} <sup> ℉ </sup>`; 
 }
-
-search("London");

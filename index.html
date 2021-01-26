@@ -17,8 +17,12 @@
     
     <form class="search-bar">
       <div class="input-group mb-3" id=search-bar>
-        <input type="text" id=search-for-city placeholder="Search for a new city" 
-          aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input 
+          type="search" 
+          id=search-for-city 
+          placeholder="Search for a new city" 
+          autocomplete="off"
+          aria-describedby="basic-addon2">
         <button type="submit" id="search-button" class="btn btn-primary">
           Search
         </button>
@@ -49,7 +53,7 @@
             </p>
           </div>
           <div class="col-4">
-            <img src="" id="current-icon" alt="">
+            <img src="" alt="condition-icon" id="current-icon" alt="">
           </div>
           <div class="col-4">
              <ul class="current-conditions">                
@@ -65,7 +69,7 @@
 
 
 
-      
+
     <section class="forecast">
       <div class="row">
         <div class="col">
